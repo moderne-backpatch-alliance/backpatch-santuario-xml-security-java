@@ -79,6 +79,7 @@ public class CreateBaltimore23Test extends org.junit.Assert {
     private final URIDereferencer ud;
 
     static {
+        System.setProperty("org.apache.xml.security.allowUnsafeResourceResolving", "true");
         Security.insertProviderAt
             (new org.apache.jcp.xml.dsig.internal.dom.XMLDSigRI(), 1);
     }
