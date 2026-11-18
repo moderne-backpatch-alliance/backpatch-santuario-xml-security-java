@@ -1,6 +1,6 @@
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 2.0.10.1-backpatch-00001
+release: 2.0.10.1-backpatch-00002
 baseline: v2.0.10+backpatch.baseline
 fixes:
   - cve: CVE-2021-40690
@@ -10,12 +10,20 @@ fixes:
     basis: adapted
     artifacts:
       - org.apache.santuario:xmlsec
-    note: New in this release; ported onto 2.0.10; fixed at 2.0.10.1-backpatch-00001 (backpatch-santuario-xml-security-java@c517ba7).
+    note: Carried from 2.0.10.1-backpatch-00001; ported onto 2.0.10; fixed at 2.0.10.1-backpatch-00001 (backpatch-santuario-xml-security-java@c517ba7).
+  - cve: CVE-2023-44483
+    upstream_fix_url: https://github.com/apache/santuario-xml-security-java/commit/cd923d63ba2a02578b263258e749f3ed94389fd8
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2023-44483
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-santuario-xml-security-java/commit/074cc4c
+    basis: adapted
+    artifacts:
+      - org.apache.santuario:xmlsec
+    note: New in this release; ported onto 2.0.10; fixed at 2.0.10.1-backpatch-00002 (backpatch-santuario-xml-security-java@074cc4c).
 tests:
-  commit: c517ba7fd7b749ed5f3da7dcbe4b3e42384ca023
+  commit: 074cc4c7cfdf85a32145874e72aa27c9d349e52d
   command: mvn -B -T1 -Dossindex.skip=true -DreuseForks=false -Dmaven.test.failure.ignore=true clean test
   runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
-  report: xmlsec-2.0.10.1-backpatch-00001-tests.zip
-  report_sha256: bff358fcbfaffd95015ca8a0683499333d7482f7614e631a587325d0b49bdce1
+  report: xmlsec-2.0.10.1-backpatch-00002-tests.zip
+  report_sha256: da99b70b693ad1d58566575f4323b73f690cdaf30d18d4150d58da5e900b0d98
   result: pass
-  note: 1047 tests at the patch commit, 13 of them skipped by the suite, 0 failed, 0 errors. Main and test classes compiled with Zulu 1.7.0_79's javac (Central's 2.0.10 jar names Build-Jdk 1.7.0_80); tests run on Zulu 8.
+  note: 1049 tests at the patch commit, 13 of them skipped by the suite, 0 failed, 0 errors. Main and test classes compiled with Zulu 1.7.0_79's javac (Central's 2.0.10 jar names Build-Jdk 1.7.0_80); tests run on Zulu 8.
