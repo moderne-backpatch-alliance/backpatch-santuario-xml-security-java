@@ -212,7 +212,7 @@ public class SignedInfo extends Manifest {
 
                 byte[] c14nizedBytes = c14nizer.canonicalizeSubtree(element);
                 Document newdoc = XMLUtils.read(new ByteArrayInputStream(
-                        c14nizedBytes), false, secureValidation);
+                        c14nizedBytes), secureValidation);
                 Node imported = element.getOwnerDocument().importNode(
                         newdoc.getDocumentElement(), true);
                 element.getParentNode().replaceChild(imported, element);

@@ -253,16 +253,7 @@ public class Canonicalizer {
         InputStream bais = new ByteArrayInputStream(inputBytes);
         InputSource in = new InputSource(bais);
 
-        // needs to validate for ID attribute normalization
-
         /*
-         * for some of the test vectors from the specification,
-         * there has to be a validating parser for ID attributes, default
-         * attribute values, NMTOKENS, etc.
-         * Unfortunately, the test vectors do use different DTDs or
-         * even no DTD. So Xerces 1.3.1 fires many warnings about using
-         * ErrorHandlers.
-         *
          * Text from the spec:
          *
          * The input octet stream MUST contain a well-formed XML document,
@@ -276,8 +267,7 @@ public class Canonicalizer {
          * though the document type declaration is not retained in the
          * canonical form.
          */
-        Document document = XMLUtils.read(in, true, secureValidation,
-                                          new org.apache.xml.security.utils.IgnoreAllErrorHandler());
+        Document document = XMLUtils.read(in, secureValidation);
         return this.canonicalizeSubtree(document);
     }
 

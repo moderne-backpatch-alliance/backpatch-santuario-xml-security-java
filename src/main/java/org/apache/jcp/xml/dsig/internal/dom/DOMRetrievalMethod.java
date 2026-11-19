@@ -269,7 +269,7 @@ public final class DOMRetrievalMethod extends DOMStructure
         try {
             ApacheData data = (ApacheData)dereference(context);
             Document doc = XMLUtils.read(new ByteArrayInputStream
-                (data.getXMLSignatureInput().getBytes()), false, secVal);
+                (data.getXMLSignatureInput().getBytes()), secVal);
             Element kiElem = doc.getDocumentElement();
             if (kiElem.getLocalName().equals("X509Data")
                 && XMLSignature.XMLNS.equals(kiElem.getNamespaceURI())) {
